@@ -10,6 +10,8 @@ module.exports = {
         yellow: "#FDCC49",
         grey: "#ededed",
         "deep-blue": "#010026",
+        "light-blue": "#3C79B4",
+        "lighter-blue": "#CFE0EC",
         "dark-grey": "#757575",
         "opaque-black": "rgba(0,0,0,0.35)",
       },
@@ -24,10 +26,10 @@ module.exports = {
         opensans: ["Open Sans", "sans=serif"],
       },
       content: {
-        brush: "url('./assets/brush.png)",
-        person1: "url('./assets/person-1.png)",
-        person2: "url('./assets/person-2.png)",
-        person3: "url('./assets/person-3.png)",
+        brush: "url('../public/assets/brush.png')",
+        person1: "url('../assets/person-1.png')",
+        person2: "url('../assets/person-2.png')",
+        person3: "url('../assets/person-3.png')",
       },
     },
     screens: {
