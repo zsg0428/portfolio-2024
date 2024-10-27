@@ -3,7 +3,7 @@ import useMediaQuery from "../hooks/useMediaQuery";
 import { Hidden } from "@mui/material";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import SocialMediaIcons from "../components/SocialMediaIcons";
-
+import resume from "../Shengge_Zhang_Fullstack.pdf";
 function Landing({ setSelectedPage }) {
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   return (
@@ -16,16 +16,16 @@ function Landing({ setSelectedPage }) {
         {isAboveMediumScreens ? (
           <div className="relative z-0 ml-20 before:absolute before:-top-20 before:-left-20 before:rounded-t-[400px] before:w-full before:max-w-[400px] before:h-full before:border-2 before:border-blue before:z-[-1]">
             <img
-              src="assets/profile-image.png"
+              src="assets/my-image.jpg"
               alt="profile"
-              className="hover:filter hover:saturate-200 transition duration-500 z-10 w-full max-w-[400px] md:max-w-[600px]"
+              className="hover:filter hover:saturate-150 transition duration-500 h-96 z-10 w-full max-w-[400px] md:max-w-[600px] rounded-t-[400px] "
             />
           </div>
         ) : (
           <img
-            src="assets/profile-image.png"
+            src="assets/my-image.jpg"
             alt="profile"
-            className="hover:filter hover:saturate-200 transition duration-500 z-10 w-full max-w-[400px] md:max-w-[600px]"
+            className="hover:filter hover:saturate-200 transition duration-500 h-auto z-10 w-full max-w-[400px] md:max-w-[600px] rounded-t-[400px]"
           />
         )}
       </div>
@@ -77,15 +77,28 @@ function Landing({ setSelectedPage }) {
           >
             Contact Me
           </AnchorLink>
-          <AnchorLink
+
+          {/* DISPLAY RESUME */}
+
+          <button className="rounded-r-sm bg-gradient-rainblue py-0.5 pr-0.5">
+            <a
+              className="bg-deep-blue hover:text-red transition duration-500 w-full h-full flex items-center justify-center font-playfiar px-10 "
+              href={resume}
+              rel="noreferrer"
+              target="_blank"
+            >
+              My Resume
+            </a>
+          </button>
+          {/* <AnchorLink
             className="rounded-r-sm bg-gradient-rainblue py-0.5 pr-0.5"
             onClick={() => setSelectedPage("contact")}
             href="#contact"
           >
             <div className="bg-deep-blue hover:text-red transition duration-500 w-full h-full flex items-center justify-center font-playfiar px-10 ">
-              Let's talk
+              My Resume
             </div>
-          </AnchorLink>
+          </AnchorLink> */}
         </motion.div>
 
         <motion.div
