@@ -2,7 +2,7 @@ import LineGradient from "../components/LineGradient";
 import SkillComponent from "../components/SkillComponent";
 import useMediaQuery from "../hooks/useMediaQuery";
 import { motion } from "framer-motion";
-import { skillList } from "../skillsList";
+import { skillList } from "../data/skillsList";
 function MySkills() {
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   return (
@@ -21,11 +21,17 @@ function MySkills() {
           }}
         >
           <p className="font-playfiar font-semibold text-4xl mb-5">
-            MY <span className="text-red">SKILLS</span>
+            MY <span className="text-yellow">SKILLS</span>
           </p>
           <LineGradient />
-          <p className="mt-10 mb-7">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <p className="mt-10 mb-2">
+            With a solid foundation in both front-end and back-end technologies,
+            I build efficient, user-focused applications. My experience spans
+            core programming languages, modern front-end frameworks, and robust
+            backend solutions, enabling me to handle a full stack of development
+            tasks seamlessly. Below, you’ll find a snapshot of the tools and
+            technologies I use to bring ideas to life, creating scalable,
+            responsive, and maintainable web applications.
           </p>
         </motion.div>
 
@@ -45,7 +51,7 @@ function MySkills() {
       </div>
 
       {/* SKILLS */}
-      <div className="md:flex md:justify-center mt-16 gap-32">
+      <div className="md:flex md:justify-center mt-2 gap-32">
         {/* EXPERIENCE */}
         <SkillComponent
           section="Programming Language"
@@ -62,83 +68,6 @@ function MySkills() {
           number="03"
           skills={skillList.backEnd}
         />
-        {/* <motion.div
-          className="md:w-1/3 mt-10"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5 }}
-          variants={{
-            hidden: { opacity: 0, y: 50 },
-            visible: { opacity: 1, y: 0 },
-          }}
-        >
-          <div className="relative h-32">
-            <div className="z-10">
-              <p className="font-playfiar font-semibold text-5xl">01</p>
-              <p className="font-playfiar font-semibold text-5xl mt-3">
-                Experience
-              </p>
-            </div>
-            <div className="w-1/2 md:w-3/4 h-32 bg-blue absolute right-0 top-0 z-[-1]" />
-          </div>
-
-          <p className="mt-5">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil,
-          </p>
-        </motion.div> */}
-        {/* Innovative */}
-        {/* <motion.div
-          className="md:w-1/3 mt-10"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          variants={{
-            hidden: { opacity: 0, y: 50 },
-            visible: { opacity: 1, y: 0 },
-          }}
-        >
-          <div className="relative h-32">
-            <div className="z-10">
-              <p className="font-playfiar font-semibold text-5xl">01</p>
-              <p className="font-playfiar font-semibold text-5xl mt-3">
-                Innovative
-              </p>
-            </div>
-            <div className="w-1/2 md:w-3/4 h-32 bg-red absolute right-0 top-0 z-[-1]" />
-          </div>
-
-          <p className="mt-5">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil,
-          </p>
-        </motion.div> */}
-        {/* Imaginative */}
-        {/* <motion.div
-          className="md:w-1/3 mt-10"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          variants={{
-            hidden: { opacity: 0, y: 50 },
-            visible: { opacity: 1, y: 0 },
-          }}
-        >
-          <div className="relative h-32">
-            <div className="z-10">
-              <p className="font-playfiar font-semibold text-5xl">03</p>
-              <p className="font-playfiar font-semibold text-5xl mt-3">
-                Innovative
-              </p>
-            </div>
-            <div className="w-1/2 md:w-3/4 h-32 bg-yellow absolute right-0 top-0 z-[-1]" />
-          </div>
-
-          <p className="mt-5">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil,
-          </p>
-        </motion.div> */}
       </div>
     </section>
   );

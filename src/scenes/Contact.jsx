@@ -27,11 +27,11 @@ function Contact() {
           visible: { opacity: 1, x: 0 },
         }}
       >
-        <div>
-          <p className="font-playfiar font-semibold text-4xl">
+        <div className="flex flex-col justify-center">
+          <p className="font-playfiar font-semibold text-4xl justify-center flex">
             <span className="text-yellow">CONTACT ME</span>
           </p>
-          <div className="flex md:justify-end my-5">
+          <div className="flex md:justify-center my-5">
             <LineGradient width="mx-auto w-2/4" />
           </div>
         </div>

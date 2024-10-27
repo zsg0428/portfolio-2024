@@ -15,7 +15,7 @@ function SkillComponent({ section, number, skills, bgColor }) {
       <div className={`relative h-32 bg-light-blue rounded-sm md:m-1`}>
         <div className="z-10 flex flex-col justify-center items-center md:flex md:flex-col md:items-center">
           <p className="font-playfiar font-semibold text-3xl ">{number}</p>
-          <p className="font-playfiar font-semibold text-xl sm:text-3xl mt-3">
+          <p className="font-playfiar font-semibold text-xl sm:text-3xl mt-3 text-center">
             {section}
           </p>
         </div>

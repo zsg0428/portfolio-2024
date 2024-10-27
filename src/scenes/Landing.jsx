@@ -44,23 +44,30 @@ function Landing({ setSelectedPage }) {
         >
           <p className="text-6xl font-playfiar z-10 text-center md:text-start">
             Shengge {""}
-            <span className="xs:relative xs:text-deep-blue xs:font-semibold z-20 xs:before:content-brush before:absolute before:-left-[25px] before:-top-[70px] before:z-[-1]">
+            <span className="xs:relative xs:font-semibold z-20 before:-left-[25px] before:-top-[70px] before:z-[-1]">
               Zhang
             </span>
           </p>
 
-          <p className="mt-10 mb-7 text-sm text-center md:text-start">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem
-            eveniet impedit culpa qui quibusdam inventore numquam quis quod
-            rerum. Repellat, tempora quas. Ipsam quisquam eum sit a totam quas.
-            Voluptas.
+          <p className="mt-10 mb-7 text-lg text-center md:text-start">
+            I'm a dedicated and versatile full-stack developer with a strong
+            background in both front-end and back-end development. Skilled in
+            technologies like React, Node.js, TypeScript, and Redux, I enjoy
+            building seamless, scalable, and user-focused applications. My
+            experience ranges from developing responsive UIs that enhance user
+            engagement to implementing secure, efficient back-end systems with
+            RESTful APIs and JWT authentication.
+            <br />
+            <br />I thrive on solving complex challenges, constantly learning,
+            and collaborating to deliver impactful solutions. Let’s connect and
+            create something exceptional!
           </p>
         </motion.div>
 
         {/* CALL TO ACTIONS */}
 
         <motion.div
-          className="flex mt-5 justify-center md:justify-center"
+          className="flex mt-5 justify-center md:justify-center md:gap-4"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
@@ -80,9 +87,9 @@ function Landing({ setSelectedPage }) {
 
           {/* DISPLAY RESUME */}
 
-          <button className="rounded-r-sm bg-gradient-rainblue py-0.5 pr-0.5">
+          <button className="rounded-r-sm bg-gradient-rainblue py-0.5 px-0.5">
             <a
-              className="bg-deep-blue hover:text-red transition duration-500 w-full h-full flex items-center justify-center font-playfiar px-10 "
+              className="bg-deep-blue hover:text-yellow transition duration-500 w-full h-full flex items-center justify-center font-playfiar px-10 "
               href={resume}
               rel="noreferrer"
               target="_blank"

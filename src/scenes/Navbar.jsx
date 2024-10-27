@@ -81,7 +81,7 @@ function Navbar({ isTopOfPage, selectedPage, setSelectedPage }) {
           </div>
         ) : (
           <button
-            className="rounded-full bg-red p-2"
+            className="rounded-full bg-yellow p-2"
             onClick={() => setIsMenuToggled((prev) => !prev)}
           >
             <MenuIcon />
