@@ -2,6 +2,7 @@ import LineGradient from "../components/LineGradient";
 import { motion } from "framer-motion";
 import projects from "../data/projects";
 import ProjectComponent from "../components/ProjectComponent";
+import {Grid2} from "@mui/material";
 const container = {
   hidden: {},
   visible: {
@@ -36,7 +37,7 @@ const Project = ({ title }) => {
 };
 
 const Projects = () => {
-  const { ecommerce, forkify } = projects;
+  const { ecommerce, forkify, wildOasis } = projects;
 
   return (
     <section id="projects" className="pt-48 pb-48">
@@ -76,8 +77,12 @@ const Projects = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
+          <Grid2 container size={12} rowSpacing={10} columnSpacing={5}>
+
           <ProjectComponent project={ecommerce} />
+          <ProjectComponent project={wildOasis} />
           <ProjectComponent project={forkify} />
+          </Grid2>
           {/* ROW 1 */}
           {/* <div
             className="flex justify-center text-center items-center p-10 bg-red

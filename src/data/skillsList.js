@@ -15,6 +15,10 @@ export const skillList = {
       image: "/assets/react.png",
     },
     {
+      skill: "NextJS",
+      image: "/assets/nextjs.png",
+    },
+    {
       skill: "Redux",
       image: "/assets/redux.png",
     },

@@ -3,7 +3,7 @@ import useMediaQuery from "../hooks/useMediaQuery";
 import { Hidden } from "@mui/material";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import SocialMediaIcons from "../components/SocialMediaIcons";
-import resume from "../Shengge_Zhang_Fullstack.pdf";
+import resume from "../Shengge_Zhang_CV_2024.pdf";
 function Landing({ setSelectedPage }) {
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   return (
