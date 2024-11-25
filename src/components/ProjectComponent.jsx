@@ -38,7 +38,7 @@ function ProjectComponent({ project }) {
           <p className='font-bold text-yellow'>
               TechStacks:
           </p>
-          <ul className='flex gap-3 my-4' >
+          <ul className='md:flex md:flex-row gap-3 my-4 sm:flex-col' >
               {techstacks.map((item, index) => {
                   return <TechStacks index={index} item={item}/>
               })}
