@@ -2,9 +2,12 @@ import {Box, Grid2} from "@mui/material";
 import {Carousel} from "./Carousel";
 import {useState} from "react";
 import {AnimatePresence, motion} from "framer-motion";
-
+import {ButtonShowMore} from "./ButtonShowMore";
+import {ButtonRedirect} from "./ButtonRedirect";
+import {TechStacks} from "./TechStacks";
+import Accordion from '@mui/material/Accordion';
 function ProjectComponent({ project }) {
-  const { title, techstacks, desc, demo, link } = project;
+  const { title, techstacks, desc, demo, link, github, shortDesc } = project;
   const [isShowMore, setIsShowMore] = useState(false)
 
 
@@ -15,37 +18,48 @@ function ProjectComponent({ project }) {
       setIsShowMore(false)
     }
   return (
-      <Grid2 item size={{sm: 12, md: 6, lg: 6}} className="md:flex md:flex-col gap-2 md:w-1/2 items-center h-auto">
+      <Grid2 sx={{border:'#FDCC49 1px solid', padding:"30px"}} item size={{sm: 12, md: 6, lg: 6}} className="md:flex md:flex-col gap-2 md:w-1/2 items-center h-auto">
+
+          <div className='flex flex-col gap-4 justify-center items-center'>
+
           <div className=' bg-light-blue h-20 w-auto rounded-md text-center items-center flex px-6 justify-center'>
               <p className='text-2xl'>
-
                   {title}
               </p>
           </div>
-          {/*  Tech Stacks section */}
-          <ul>
 
+          <p>{shortDesc}</p>
+          </div>
+
+          {/*  Tech Stacks section */}
+          <ul className='flex gap-3 my-4'>
+           <p className='font-bold'>
+              TechStacks:
+           </p>
               {techstacks.map((item, index) => {
-                  return <li key={index}>{item}</li>;
+                  return <TechStacks index={index} item={item}/>
               })}
           </ul>
 
-          <Box>
+          <Box className='flex flex-col justify-center items-center my-4'>
 
               {!isShowMore ? (
-                  <button onClick={handleShowMore}>
-                     <p className='text-center'>
+                  <ButtonShowMore desc={desc} onClick={handleShowMore}>
+                     {/*<p className='text-center text-black'>*/}
 
-                      Show More Details
-                     </p>
-                  </button>
+                     {/* Show More Details*/}
+                     {/*</p>*/}
+
+                  </ButtonShowMore>
               ) : (
-                  <button onClick={handleCloseMore}>
-                      <p className='text-center'>
+                  <ButtonShowMore onClick={handleCloseMore}>
+
+
+                      <p className='text-center text-black'>
 
                           Hide Details
                       </p>
-                  </button>
+                  </ButtonShowMore>
               )}
               {/* Animated Description */}
               <AnimatePresence>
@@ -76,13 +90,13 @@ function ProjectComponent({ project }) {
               })}
 
           </div>
+          <div className='flex gap-2 justify-center'>
+
           {link && (
-              <button className='mt-4 w-auto h-auto bg-yellow p-3 rounded-md text-center '>
-                  <a className='font-bold text-lg text-black' target="_blank" rel="noreferrer" href={link}>
-                      Link to project
-                  </a>
-              </button>
+              <ButtonRedirect link={link}>Live App</ButtonRedirect>
           )}
+              {github && <ButtonRedirect link={github}>GitHub Repo</ButtonRedirect>}
+          </div>
 
       </Grid2>
   );

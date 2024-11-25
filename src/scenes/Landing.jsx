@@ -52,7 +52,7 @@ function Landing({ setSelectedPage }) {
           <p className="mt-10 mb-7 text-lg text-center md:text-start">
             I'm a dedicated and versatile full-stack developer with a strong
             background in both front-end and back-end development. Skilled in
-            technologies like React, Node.js, TypeScript, and Redux, I enjoy
+            technologies like React, Next.js, Node.js, TypeScript, and Redux, I enjoy
             building seamless, scalable, and user-focused applications. My
             experience ranges from developing responsive UIs that enhance user
             engagement to implementing secure, efficient back-end systems with

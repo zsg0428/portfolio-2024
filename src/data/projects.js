@@ -10,8 +10,10 @@ const projects = {
       "NodeJS",
       "ExpressJS",
     ],
+    shortDesc:"A comprehensive e-commerce platform offering seamless shopping experiences, including secure payment gateways and efficient checkout processes.",
     desc: "Led the development of a robust e-commerce platform, building a single-page application (SPA) using React and Redux to create a dynamic and responsive user experience. Designed reusable components and optimized state management, improving future development speed by 30%. Integrated secure payment gateways, including PayPal and Stripe, to reduce checkout abandonment by 18%. Engineered efficient backend communication with RESTful APIs using Node.js and Express, achieving a 40% reduction in data latency. Implemented JWT-based authentication for secure user sessions and Role-Based Access Control (RBAC) to enhance platform security. Integrated Google Address Autocomplete API, streamlining the checkout process and increasing accuracy, resulting in a 20% faster completion rate.",
     demo: ["assets/ecom-1.png", "assets/ecom-2.png", "assets/ecom-3.png"],
+    github:'https://github.com/xcai0511/c74-lululemon'
   },
   wildOasis: {
     title: "The Wild Oasis",
@@ -21,18 +23,24 @@ const projects = {
       "Supabase",
         'NextAuth',
     ],
-    desc: "Developed a travel and accommodation booking platform, The Wild Oasis, using React for a seamless and interactive front-end experience. Implemented a responsive design with Tailwind CSS to ensure accessibility across devices. Built RESTful APIs with Node.js and Express to handle bookings, user management, and property listings. Integrated MongoDB for efficient data storage and retrieval, supporting scalable user and property data management. Added authentication and authorization features using JWT, ensuring secure user sessions and data protection. Designed an interactive property search feature, allowing users to filter accommodations by location, price, and amenities, improving user satisfaction by 25%.",
-    demo: ["assets/oasis1.png","assets/oasis2.png","assets/oasis3.png","assets/oasis4.png",],
+
+    shortDesc: 'A vacation booking platform enabling users to browse, filter, and book accommodations with ease, featuring Google Login and a dynamic date-picker.',
+    desc: "Developed a travel and accommodation booking platform showcasing vacation destinations. Leveraged Next.js for seamless server-side rendering and enhanced performance. Integrated NextAuth with Google Login for secure and intuitive user authentication. Styled the platform with Tailwind CSS, delivering a visually appealing, mobile-first user interface. Utilized Supabase to handle database interactions, user management, and storage solutions. Added a dynamic calendar feature using React Day Picker, enabling users to select vacation dates seamlessly. Deployed on Vercel for fast load times and global accessibility.",
+    demo: ["assets/oasis4.png","assets/oasis2.png","assets/oasis3.png","assets/oasis1.png",],
     link: "https://the-wild-oasis-dempsey.vercel.app/",
+    github:'https://github.com/zsg0428/the-wild-oasis-project'
   },
 
   // forkify project
   forkify: {
     title: "Forkify Project",
     techstacks: ["HTML", "CSS", "JavaScript"],
+
+    shortDesc:'A recipe search application that allows users to find, save, and manage their favorite recipes with real-time API data fetching.',
     desc: "Built a responsive and interactive recipe search application using JavaScript, integrating dynamic API data fetching to provide users with detailed recipe information, including cooking time, servings, and ingredients. Implemented asynchronous API calls to deliver recipes based on user input, ensuring real-time data updates. Designed a user-friendly interface focused on an intuitive and visually appealing user experience. Managed state efficiently by storing user-selected recipes in localStorage, allowing users to save, add, and remove favorite recipes for seamless and persistent interactions.",
     demo: ["assets/forkify-1.png"],
     link: "https://forkify-dempsey.netlify.app/",
+    github:'https://github.com/zsg0428/forkify-project-dempsey'
   },
 };
 

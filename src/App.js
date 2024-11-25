@@ -9,6 +9,7 @@ import Projects from "./scenes/Projects";
 import Contact from "./scenes/Contact";
 import { motion } from "framer-motion";
 import {Carousel} from "./components/Carousel";
+import {Footer} from "./scenes/Footer";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState("home");
@@ -80,6 +81,7 @@ function App() {
           <Contact />
         </motion.div>
       </div>
+        <Footer/>
     </div>
   );
 }

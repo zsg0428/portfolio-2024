@@ -62,9 +62,7 @@ const Projects = () => {
           </div>
         </div>
         <p className="mt-10 mb-10">
-          Aliquam, amet dui feugiat facilisi dui. Aliquam aliquet integer ut
-          fames odio in at. At magna ornare dictum lectus. Purus massa morbi
-          purus nec eget eleifend ut elit.
+          These projects demonstrate my ability to build dynamic, user-centric web applications using modern frameworks and technologies. Each project addresses specific challenges, from seamless e-commerce experiences to responsive travel booking platforms, showcasing my expertise in full-stack development.
         </p>
       </motion.div>
 
