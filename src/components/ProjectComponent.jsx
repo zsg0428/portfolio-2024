@@ -18,37 +18,41 @@ function ProjectComponent({ project }) {
       setIsShowMore(false)
     }
   return (
-      <Grid2 sx={{border:'#FDCC49 1px solid', padding:"30px"}} item size={{sm: 12, md: 6, lg: 6}} className="md:flex md:flex-col gap-2 md:w-1/2 items-center h-auto">
+      <Grid2 sx={{border: '#FDCC49 1px solid', padding: "30px"}} item size={{sm: 12, md: 6, lg: 6}}
+             className="md:flex md:flex-col gap-2 md:w-1/2 items-center h-auto">
 
           <div className='flex flex-col gap-4 justify-center items-center'>
 
-          <div className=' bg-light-blue h-20 w-auto rounded-md text-center items-center flex px-6 justify-center'>
-              <p className='text-2xl'>
-                  {title}
-              </p>
-          </div>
+              <div className=' bg-light-blue h-20 w-auto rounded-md text-center items-center flex px-6 justify-center'>
+                  <p className='text-2xl'>
+                      {title}
+                  </p>
+              </div>
 
-          <p>{shortDesc}</p>
+              <p>{shortDesc}</p>
           </div>
 
           {/*  Tech Stacks section */}
-          <ul className='flex gap-3 my-4'>
-           <p className='font-bold'>
+          <div className='flex flex-col justify-center items-center mt-6'>
+
+          <p className='font-bold text-yellow'>
               TechStacks:
-           </p>
+          </p>
+          <ul className='flex gap-3 my-4' >
               {techstacks.map((item, index) => {
                   return <TechStacks index={index} item={item}/>
               })}
           </ul>
+          </div>
 
           <Box className='flex flex-col justify-center items-center my-4'>
 
               {!isShowMore ? (
                   <ButtonShowMore desc={desc} onClick={handleShowMore}>
-                     {/*<p className='text-center text-black'>*/}
+                      {/*<p className='text-center text-black'>*/}
 
-                     {/* Show More Details*/}
-                     {/*</p>*/}
+                      {/* Show More Details*/}
+                      {/*</p>*/}
 
                   </ButtonShowMore>
               ) : (
@@ -63,12 +67,12 @@ function ProjectComponent({ project }) {
               )}
               {/* Animated Description */}
               <AnimatePresence>
-              {isShowMore && (
+                  {isShowMore && (
                       <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.5, ease: "easeInOut" }}
+                          initial={{opacity: 0, height: 0}}
+                          animate={{opacity: 1, height: "auto"}}
+                          exit={{opacity: 0, height: 0}}
+                          transition={{duration: 0.5, ease: "easeInOut"}}
                           className="p-4"
                       >
                           {desc}
@@ -92,9 +96,9 @@ function ProjectComponent({ project }) {
           </div>
           <div className='flex gap-2 justify-center'>
 
-          {link && (
-              <ButtonRedirect link={link}>Live App</ButtonRedirect>
-          )}
+              {link && (
+                  <ButtonRedirect link={link}>Live App</ButtonRedirect>
+              )}
               {github && <ButtonRedirect link={github}>GitHub Repo</ButtonRedirect>}
           </div>
 
