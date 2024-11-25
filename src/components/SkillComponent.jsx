@@ -25,7 +25,7 @@ function SkillComponent({ section, number, skills, bgColor }) {
       <div className="mt-5 flex justify-evenly gap-2">
         {skills.map((item, index) => {
           return (
-            <div className="flex flex-col items-center gap-2">
+            <div key={index} className="flex flex-col items-center gap-2">
               <img
                 key={index}
                 className="w-8 h-8 flex-wrap bg-transparent rounded-md"

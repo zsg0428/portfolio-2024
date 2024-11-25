@@ -89,7 +89,7 @@ function Landing({ setSelectedPage }) {
 
           <button className="rounded-r-sm bg-gradient-rainblue py-0.5 px-0.5">
             <a
-              className="bg-deep-blue hover:text-yellow transition duration-500 w-full h-full flex items-center justify-center font-playfiar px-10 "
+              className="bg-deep-blue hover:text-yellow transition duration-500 w-full h-full flex items-center justify-center font-semibold px-10 "
               href={resume}
               rel="noreferrer"
               target="_blank"

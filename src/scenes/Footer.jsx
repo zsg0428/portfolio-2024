@@ -7,8 +7,8 @@ export const Footer = () => {
             <div className='w-5/6 mx-auto'>
                 <SocialMediaIcons/>
                 <div className='flex justify-center md: justify-between text-center'>
-                    <p className='font-playfiar font-semibold text-2xl text-yellow'>Shengge(Dempsey) Zhang</p>
-                    <p className='font-playfiar text-xl text-yellow'>©2024 Zhang. All Rights Reserved.</p>
+                    <p className='font-opensans font-semibold text-2xl text-yellow'>Shengge(Dempsey) Zhang</p>
+                    <p className='font-opensans text-xl text-yellow'>©2024 Zhang. All Rights Reserved.</p>
                 </div>
             </div>
         </footer>

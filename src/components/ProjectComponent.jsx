@@ -86,6 +86,7 @@ function ProjectComponent({ project }) {
               {demo.length > 1 ? <Carousel images={demo}/> : demo.map((item, index) => {
                   return (
                       <img
+                          key={index}
                           className="w-full h-[400px] object-cover"
                           src={item}
                           alt={`${item}-pic`}
