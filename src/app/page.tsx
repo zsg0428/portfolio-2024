@@ -2,6 +2,7 @@ import { CaseStudy } from "@/components/CaseStudy";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { OfferRing } from "@/components/OfferRing";
+import { Rich } from "@/components/Rich";
 import { Section } from "@/components/Section";
 import { alsoAtAddie, caseStudies, education, experience, otherProjects, profile, skills } from "@/content/site";
 
@@ -30,8 +31,10 @@ export default function Home() {
           <div className="mt-6 grid gap-x-12 gap-y-8 md:grid-cols-2">
             {alsoAtAddie.map((item) => (
               <div key={item.title} className="max-w-[60ch]">
-                <h4 className="font-semibold">{item.title}</h4>
-                <p className="mt-1 leading-relaxed text-ink-soft">{item.text}</p>
+                <h4 className="font-semibold text-ink">{item.title}</h4>
+                <p className="mt-1 leading-relaxed text-ink-soft">
+                  <Rich text={item.text} />
+                </p>
               </div>
             ))}
           </div>

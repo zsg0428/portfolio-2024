@@ -57,8 +57,8 @@ export function DemoTabs({ demos }: { demos: Demo[] }) {
         <video
           key={demo.id}
           className="h-auto w-full rounded-[3px] border border-rule bg-paper-raised"
-          width={1200}
-          height={854}
+          width={demo.width}
+          height={demo.height}
           autoPlay
           muted
           loop
