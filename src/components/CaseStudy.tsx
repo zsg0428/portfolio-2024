@@ -10,15 +10,25 @@ const voiceFlow: FlowStep[] = [
   { name: "Notes on the student's profile", detail: "Feeds Addie's context in later conversations" },
 ];
 
-const reportingFlow: FlowStep[] = [
-  { name: "School admin asks a question", detail: "Plain English, inside the counselor app", via: "Agent writes SQL" },
+const meetingsFlow: FlowStep[] = [
+  { name: "Counselor starts a meeting", detail: "Records in the browser or uploads a file", via: "Before the microphone opens" },
   {
-    name: "Guardrails",
-    guards: ["Read only connection", "School taken from the signed in identity", "Table allowlist, no transcript content", "Test, demo and archived students left out"],
-    via: "Query runs",
+    name: "Consent",
+    guards: ["Everyone in the room is named", "Consent script read aloud", "Each person's consent recorded with the notice version"],
+    via: "Audio to a private bucket",
   },
-  { name: "Production Postgres", via: "Rows and a plain English answer" },
-  { name: "Answer and audit log entry", detail: "Every query recorded" },
+  { name: "Background transcription", detail: "AssemblyAI diarization, retried on failure", via: "Counselor labels the speakers" },
+  { name: "Summary from the labeled transcript", detail: "Saved to the student's notes and the counselor chat's context" },
+];
+
+const conversationsFlow: FlowStep[] = [
+  { name: "Counselor designs a journey", detail: "Conversations with structured and open questions", via: "Each step unlocks after the last, or on a date" },
+  { name: "Addie runs the conversation", detail: "Web, SMS, WhatsApp or voice", via: "Student goes quiet" },
+  { name: "Reminders", detail: "SMS, WhatsApp and email, with a global pause and per school kill switch", via: "Conversation ends" },
+  {
+    name: "LLM judge",
+    guards: ["Scores repetition, closure and made up claims", "Quotes its evidence", "Calibrated against admin labels before auto scoring"],
+  },
 ];
 
 function Figure({ kind }: { kind: CaseStudyData["figure"] }) {
@@ -33,7 +43,10 @@ function Figure({ kind }: { kind: CaseStudyData["figure"] }) {
   if (kind === "voice") {
     return <FlowDiagram steps={voiceFlow} caption="How a voice session runs. Simplified; no real student data." />;
   }
-  return <FlowDiagram steps={reportingFlow} caption="Where the safety lives: in code around the model, not in the prompt." />;
+  if (kind === "conversations") {
+    return <FlowDiagram steps={conversationsFlow} caption="A conversation from plan to score. Simplified; no real student data." />;
+  }
+  return <FlowDiagram steps={meetingsFlow} caption="How a meeting becomes part of the record. Simplified; no real student data." />;
 }
 
 export function CaseStudy({ study }: { study: CaseStudyData }) {
