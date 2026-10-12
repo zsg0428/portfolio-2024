@@ -2,7 +2,7 @@ import { profile } from "@/content/site";
 
 const sections = [
   { href: "#work", label: "Work" },
-  { href: "#offerring", label: "OfferRing" },
+  { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
   { href: "#contact", label: "Contact" },
 ];
