@@ -14,7 +14,7 @@ export const profile = {
   resume: "/Shengge_Zhang_Resume.pdf",
   headline: "I build AI products people actually use, from the database schema to the agent prompt to the deploy pipeline.",
   intro:
-    "Since January 2025 I have been building Addie, an AI college counseling platform used by 2,000+ students at 20+ schools. I merged 560+ pull requests there and led 11 projects end to end. I start from evals, so I can show when an agent is actually better and not just better in a demo.",
+    "Since January 2025 I have been building Addie, an AI college counseling platform used by 2,000+ students at 20+ schools. I merged 560+ pull requests there and built AI features end to end: a voice agent students talk to, guided AI conversations checked by an LLM judge, and meeting transcription. I start from evals, so I can show when an agent is actually better and not just better in a demo.",
 } as const;
 
 export interface Measure {
@@ -41,23 +41,61 @@ export interface CaseStudy {
   approach: string[];
   result: string;
   stack: string[];
-  figure: "recall" | "voice" | "reporting";
+  figure: "recall" | "voice" | "meetings" | "conversations";
 }
 
 export const caseStudies: CaseStudy[] = [
   {
+    id: "experiences",
+    title: "Experiences: a voice agent students talk to",
+    role: "Project lead, built end to end",
+    summary:
+      "Students start a short voice session to log a campus visit or a college fair. The agent stays on goal, wraps up on time and saves structured notes to their profile.",
+    problem:
+      "Voice sessions lived inside counselor assigned conversations. A session a student starts on their own could not leak into chat lists, reminders or counselor dashboards, and speakerphone made the agent hear itself.",
+    approach: [
+      "A purpose field picks the prompt and the extraction schema, and sessions live in their own table, so experiences stay out of reminder sweeps and conversation lists.",
+      "The agent wraps up at 5 minutes and stops at 10; prompts can be edited without a deploy.",
+      "Notes reach college matching as text on the student's card, so the matching engine needed no change.",
+      "As owner of browser voice, I moved it from a WebSocket relay to a real WebRTC peer connection so echo cancellation works.",
+    ],
+    result:
+      "Speakerphone calls went from the agent answering itself to clean turns, verified on a real iPhone, and the WebRTC move removed about 345 backend lines.",
+    stack: ["OpenAI Realtime API", "WebRTC", "Next.js", "FastAPI", "Postgres"],
+    figure: "voice",
+  },
+  {
+    id: "conversations",
+    title: "Guided AI conversations, checked by an LLM judge",
+    role: "Built the conversations, journeys and reminders; project lead for the evals",
+    summary:
+      "Counselors design conversations that Addie runs with students over web, SMS, WhatsApp and voice. 13,000+ have been assigned.",
+    problem:
+      "Counselors needed Addie to follow their plan with each student, step by step and on time. Later, users reported conversations that repeated themselves, never closed, or claimed things students never said, and the only way to check was copying transcripts into other tools.",
+    approach: [
+      "A conversation builder with structured and open questions, and journeys that unlock each conversation after the last one or on a set date.",
+      "Reminders over SMS, WhatsApp and email, fanned out in background jobs, with a global pause and a per school kill switch.",
+      "An LLM judge scores every real conversation for repetition, closure and made up claims, quoting its evidence.",
+      "Admins hand label conversations; rubrics are rewritten until the judge agrees within one point, and auto scoring turns on only after calibration passes.",
+    ],
+    result:
+      "Instead of copy and paste spot checks, every real conversation can be scored with evidence, and admins work from a Needs Review queue.",
+    stack: ["OpenAI", "Celery", "Twilio", "WhatsApp", "Resend", "Next.js", "Evals"],
+    figure: "conversations",
+  },
+  {
     id: "rag-assistant",
     title: "A counselor assistant that finds the facts",
-    role: "Project lead, in progress",
+    role: "I build the retrieval side, in progress",
     summary:
       "Counselors ask about any student and get sourced answers from meetings, notes and files.",
     problem:
-      "The first assistant answered from a fixed dump of the student's record, about 40k tokens a turn. The plan was an agent that fetches only what it needs. Before shipping it I built a 70 question recall test with facts planted in synthetic students. The first retrieval design found almost none of them.",
+      "The current assistant answers from a fixed dump of the student's record, about 40k tokens a turn. The plan was an agent that fetches only what it needs. Before shipping it I built a 70 question recall test with facts planted in synthetic students. The first retrieval design found almost none of them.",
     approach: [
       "Redesigned around layered context: short records inline in the prompt, conversation digests, originals fetched on demand.",
       "LangGraph agent with 9 retrieval tools. The server binds whose data a tool can read; the model never names a student.",
       "Picked the agent loop with a live harness: 3 designs, 12 scenarios, 3 samples each.",
-      "Answers stream with their sources into a side panel, with hard limits on rounds, calls and time.",
+      "Every turn is recorded with its context and tool calls, so the eval track can score it.",
     ],
     result:
       "The redesign lifted recall from 3% to 43% of planted facts using a third of the current assistant's tokens, and answers start in 1.8 seconds instead of 5.3. It stays behind a flag while the next step closes the gap to the current assistant's 67%.",
@@ -65,41 +103,22 @@ export const caseStudies: CaseStudy[] = [
     figure: "recall",
   },
   {
-    id: "voice-agent",
-    title: "A voice agent students talk to",
-    role: "Project lead",
+    id: "meetings",
+    title: "Meeting transcription counselors can trust",
+    role: "Project lead, built end to end",
     summary:
-      "Students talk to Addie to log college visits. The agent stays on goal, wraps up on time and saves structured notes to the student's profile.",
+      "Counselors record or upload an in person meeting and get a speaker labeled transcript and a summary that becomes part of the student's record.",
     problem:
-      "On speakerphone the agent heard its own voice through the student's microphone and answered itself, so a short check in turned into fake student turns.",
+      "Recording students has legal weight. Washington and California require every person in the room to consent, so the feature could not roll out to more schools without a consent flow built into it.",
     approach: [
-      "Moved browser voice from a WebSocket relay to a real WebRTC peer connection, so the browser's echo cancellation works. That also removed about 345 backend lines.",
-      "Purpose scoped sessions: the agent wraps up at 5 minutes and stops at 10, and its tool calls are guarded.",
-      "Notes are extracted into structured fields that feed the student's profile.",
+      "Ran a vendor test before building: AssemblyAI transcribed 115 minutes of audio in 97 seconds at 99.4% accuracy for about half the cost.",
+      "Consent first: the counselor names who is in the room, reads a consent script, and every person's consent is recorded before the microphone opens.",
+      "Diarization runs in a background job with retries; counselors label speakers, then an LLM writes the summary from the labeled transcript.",
+      "Summaries flow into the student's notes and into the counselor chat's context.",
     ],
-    result:
-      "Speakerphone calls went from fake student turns to clean turns, verified on a real iPhone. I also recovered calls when an iOS alarm takes the microphone and stopped the 800 ms silence window from cutting students off.",
-    stack: ["OpenAI Realtime API", "WebRTC", "Next.js", "FastAPI"],
-    figure: "voice",
-  },
-  {
-    id: "reporting-agent",
-    title: "Plain English questions over production data",
-    role: "Project lead",
-    summary:
-      "School admins ask questions in plain English and an agent writes and runs the SQL against production data.",
-    problem:
-      "An agent with database access in a school product has to be unable to leak another school's data or a student's transcript, whatever the question says.",
-    approach: [
-      "Read only access. The school comes from the signed in identity on the server, never from the prompt.",
-      "SQL guardrails: a table allowlist, a hard block on transcript content, and test, demo and archived students excluded.",
-      "Adversarial tests that try to reach transcripts and other schools' data.",
-      "Every query is audited.",
-    ],
-    result:
-      "Shipped to school admins inside the counselor app with every query scoped and audited.",
-    stack: ["Text to SQL", "LangChain", "Postgres", "FastAPI", "Audit logging"],
-    figure: "reporting",
+    result: "Live at 5 schools with 44 meetings transcribed so far, and full pipeline speaker accuracy of 99.8%.",
+    stack: ["AssemblyAI", "Celery", "FastAPI", "Next.js", "Prisma", "GCS"],
+    figure: "meetings",
   },
 ];
 
@@ -126,12 +145,8 @@ export const recallMeasures: MeasureGroup[] = [
 
 export const alsoAtAddie = [
   {
-    title: "Meeting transcription",
-    text: "Counselors record meetings and get speaker labeled transcripts and summaries. I picked AssemblyAI after a vendor test (99.4% accuracy at half the cost) and built the all party consent flow that Washington and California law require. Live at 5 schools.",
-  },
-  {
-    title: "Guided AI conversations",
-    text: "Counselors design conversations Addie runs with students over web, SMS, WhatsApp and voice, 13,000+ assigned so far. I built the builder, multi step journeys, reminders, and an LLM as a judge scoring system calibrated against human labels.",
+    title: "Safer school reports",
+    text: "School admins ask a reporting agent questions in plain English. Before it opened to them I found its metrics only limit lived only in the prompt, so I added a hard column guardrail that keeps transcripts out, school scope taken from the signed in admin, and an audit entry for every query.",
   },
   {
     title: "Deploys that tell the truth",
@@ -249,7 +264,7 @@ export const experience: Role[] = [
     title: "Full Stack Developer (AI Product)",
     period: "Jan 2025 to now",
     place: "Remote, Toronto",
-    text: "AI college counseling platform for 2,000+ students and 70+ active counselors at 20+ schools. 560+ merged pull requests across a Python backend and three Next.js apps; project lead on 11 projects, 6 shipped. Top contributor to the repo from July to October 2026. Led the Turborepo monorepo migration and the student and counselor UI revamps.",
+    text: "AI college counseling platform for 2,000+ students and 70+ active counselors at 20+ schools. 560+ merged pull requests across a Python backend and three Next.js apps. Project lead for meeting transcription, Experiences, the conversation quality eval system, the student and counselor UI revamps and the Turborepo monorepo migration. Top contributor to the repo from July to October 2026.",
   },
   {
     company: "Vosyn.ai",

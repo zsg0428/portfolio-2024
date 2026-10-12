@@ -18,7 +18,7 @@ export default function Home() {
         <Section
           id="work"
           title="Selected work at Addie"
-          lede="Three AI features I led at Addie, an AI college counseling platform. Each one had a way to fail that a demo would not show, so I measured or guarded against it first."
+          lede="Four AI features I built at Addie, an AI college counseling platform. Each had a way to fail that a demo would not show, so I measured or guarded against it first."
         >
           <div className="space-y-24">
             {caseStudies.map((study) => (
