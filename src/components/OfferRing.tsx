@@ -1,5 +1,6 @@
 import { offerRing, offerRingDemos } from "@/content/site";
 import { DemoTabs } from "./DemoTabs";
+import { Rich } from "./Rich";
 
 export function OfferRing() {
   return (
@@ -8,11 +9,24 @@ export function OfferRing() {
         <div className="max-w-[64ch]">
           <h3 className="text-[clamp(1.6rem,3vw,2.25rem)] leading-tight font-bold tracking-[-0.02em]">{offerRing.title}</h3>
           <p className="mt-1 text-ink-soft">{offerRing.tagline}</p>
-          <p className="mt-4 text-xl leading-snug">{offerRing.summary}</p>
-          <ul className="mt-6 space-y-2 leading-relaxed text-ink-soft">
+          <p className="mt-4 text-xl leading-snug text-ink-soft">
+            <Rich text={offerRing.summary} />
+          </p>
+
+          <dl className="mt-8 grid gap-x-8 gap-y-5 sm:grid-cols-2">
+            {offerRing.features.map((f) => (
+              <div key={f.title} className="border-t border-rule pt-3">
+                <dt className="font-semibold text-ink">{f.title}</dt>
+                <dd className="mt-1 text-[0.95rem] leading-relaxed text-ink-soft">{f.text}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <h4 className="mt-10 text-sm font-semibold text-signal">How it stays honest</h4>
+          <ul className="mt-3 space-y-3 leading-relaxed text-ink-soft">
             {offerRing.points.map((p) => (
               <li key={p} className="relative pl-5 before:absolute before:top-[0.6em] before:left-0.5 before:size-1.5 before:rounded-full before:bg-signal">
-                {p}
+                <Rich text={p} />
               </li>
             ))}
           </ul>

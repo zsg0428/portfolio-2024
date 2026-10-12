@@ -2,6 +2,7 @@ import type { CaseStudy as CaseStudyData } from "@/content/site";
 import { recallMeasures } from "@/content/site";
 import { FlowDiagram, type FlowStep } from "./FlowDiagram";
 import { MeasureChart } from "./MeasureChart";
+import { Rich } from "./Rich";
 
 const voiceFlow: FlowStep[] = [
   { name: "Student's browser or phone", detail: "Microphone with echo cancellation on", via: "WebRTC peer connection, audio both ways" },
@@ -53,26 +54,34 @@ export function CaseStudy({ study }: { study: CaseStudyData }) {
   return (
     <article id={study.id} aria-labelledby={`${study.id}-title`} className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-16">
       <div className="max-w-[64ch]">
-        <p className="text-sm text-ink-soft">{study.role}</p>
-        <h3 id={`${study.id}-title`} className="mt-1 text-[clamp(1.6rem,3vw,2.25rem)] leading-tight font-bold tracking-[-0.02em]">
+        <p className="inline-block rounded-full bg-signal-soft px-3 py-1 text-xs font-medium text-signal">{study.role}</p>
+        <h3 id={`${study.id}-title`} className="mt-3 text-[clamp(1.6rem,3vw,2.25rem)] leading-tight font-bold tracking-[-0.02em]">
           {study.title}
         </h3>
-        <p className="mt-3 text-xl leading-snug">{study.summary}</p>
+        <p className="mt-3 text-xl leading-snug text-ink">
+          <Rich text={study.summary} />
+        </p>
 
-        <h4 className="mt-8 font-semibold">The problem</h4>
-        <p className="mt-2 leading-relaxed text-ink-soft">{study.problem}</p>
+        <h4 className="mt-8 text-sm font-semibold text-signal">The problem</h4>
+        <p className="mt-2 leading-relaxed text-ink-soft">
+          <Rich text={study.problem} />
+        </p>
 
-        <h4 className="mt-6 font-semibold">What I built</h4>
-        <ul className="mt-2 space-y-2 leading-relaxed text-ink-soft">
+        <h4 className="mt-6 text-sm font-semibold text-signal">What I built</h4>
+        <ul className="mt-2 space-y-3 leading-relaxed text-ink-soft">
           {study.approach.map((a) => (
             <li key={a} className="relative pl-5 before:absolute before:top-[0.6em] before:left-0.5 before:size-1.5 before:rounded-full before:bg-signal">
-              {a}
+              <Rich text={a} />
             </li>
           ))}
         </ul>
 
-        <h4 className="mt-6 font-semibold">Result</h4>
-        <p className="mt-2 leading-relaxed">{study.result}</p>
+        <div className="mt-8 border-l-2 border-signal pl-5">
+          <h4 className="text-sm font-semibold text-signal">Result</h4>
+          <p className="mt-1 text-lg leading-relaxed text-ink">
+            <Rich text={study.result} />
+          </p>
+        </div>
 
         <p className="mt-6 text-sm text-ink-soft">Built with {study.stack.join(", ")}</p>
       </div>
