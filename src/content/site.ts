@@ -163,8 +163,9 @@ export const offerRing = {
   tagline: "A job search copilot I build on my own time and use every day.",
   status: "Private deployment for my own job search; the source is not public yet.",
   summary:
-    "My own job search tool: a browser side panel and a dashboard. It fills standard application fields, drafts open question answers grounded only in my own experience, remembers every answer I submit, warns me before I apply twice, and ranks new postings every day. It never submits an application.",
+    "My own job search tool: a browser side panel and a dashboard. It fills standard application fields, drafts open question answers grounded only in my own experience, remembers every answer I submit, warns me before I apply twice, ranks new postings every day, and answers questions about my own search through Ringo, an agentic RAG assistant. It never submits an application.",
   points: [
+    "Ringo searches my postings, sent answers and facts by meaning and by words (pgvector embeddings and Postgres full text, merged by reciprocal rank fusion), and uses structured tools for dates, counts and statuses. The agent picks the tool, rewrites its query when a search misses, and cites every source.",
     "Generated answers may only state facts from my fact bank. Numbers, employers and dates are checked in code, not trusted to the prompt.",
     "Work authorization, sponsorship and EEO questions are never decided by a model; they come only from stored answers.",
     "Job discovery uses public ATS APIs and official search APIs. No scraping, no automation on LinkedIn.",
@@ -175,8 +176,8 @@ export const offerRing = {
     { metric: "Form questions answered right", before: "40%", after: "100%" },
   ],
   evalNote:
-    "The first answer eval failed three thresholds and showed why: drafts credited one fact's result to another. Fixing the prompt and the checks brought every threshold to pass. Form answers compare rules alone with rules plus the model, on 15 fictional questions, with zero wrong answers in both.",
-  stack: ["WXT", "React", "Next.js", "Prisma", "Postgres", "Claude Haiku", "Evals"],
+    "The first answer eval failed three thresholds and showed why: drafts credited one fact's result to another. Fixing the prompt and the checks brought every threshold to pass. Form answers compare rules alone with rules plus the model, on 15 fictional questions, with zero wrong answers in both. Ringo's eval answers 22 of 22 questions with the right facts and citations, including paraphrases and a Chinese question over English text, at under a tenth of a cent each.",
+  stack: ["WXT", "React", "Next.js", "Prisma", "Postgres", "pgvector", "Voyage embeddings", "Claude Haiku", "Evals"],
 } as const;
 
 export interface Demo {
@@ -198,6 +199,14 @@ export const offerRingDemos: Demo[] = [
     src: "/demos/offerring-autofill",
     width: 1280,
     height: 684,
+  },
+  {
+    id: "ringo",
+    title: "Ringo",
+    caption: "Questions about my own search, answered by an agent. It searches by meaning and by words, tries other words when a search misses, checks records like an application's status, and cites every source.",
+    src: "/demos/offerring-ringo",
+    width: 1200,
+    height: 854,
   },
   {
     id: "today",
