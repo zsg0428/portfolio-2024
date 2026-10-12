@@ -6,7 +6,9 @@ export function OfferRing() {
     <div>
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-16">
         <div className="max-w-[64ch]">
-          <p className="text-xl leading-snug">{offerRing.summary}</p>
+          <h3 className="text-[clamp(1.6rem,3vw,2.25rem)] leading-tight font-bold tracking-[-0.02em]">{offerRing.title}</h3>
+          <p className="mt-1 text-ink-soft">{offerRing.tagline}</p>
+          <p className="mt-4 text-xl leading-snug">{offerRing.summary}</p>
           <ul className="mt-6 space-y-2 leading-relaxed text-ink-soft">
             {offerRing.points.map((p) => (
               <li key={p} className="relative pl-5 before:absolute before:top-[0.6em] before:left-0.5 before:size-1.5 before:rounded-full before:bg-signal">
@@ -15,9 +17,7 @@ export function OfferRing() {
             ))}
           </ul>
           <p className="mt-6 text-sm text-ink-soft">Built with {offerRing.stack.join(", ")}</p>
-          <a href={offerRing.url} className="link mt-4 inline-block font-medium">
-            Open OfferRing
-          </a>
+          <p className="mt-2 text-sm text-ink-soft">{offerRing.status}</p>
         </div>
 
         <figure className="self-start rounded-[3px] border border-rule bg-paper-raised p-5 sm:p-6">

@@ -37,8 +37,27 @@ export default function Home() {
           </div>
         </Section>
 
-        <Section id="offerring" title="OfferRing" lede="A product I build on my own time, and use every day for my own job search.">
+        <Section id="projects" title="Projects">
           <OfferRing />
+
+          <h3 className="mt-24 text-2xl font-bold tracking-tight">More projects</h3>
+          <ul className="mt-6 max-w-4xl">
+            {otherProjects.map((p) => (
+              <li key={p.title} className="grid gap-1 border-t border-rule py-5 first:border-t-0 first:pt-0 sm:grid-cols-[12rem_1fr] sm:gap-8">
+                <h4 className="font-semibold">{p.title}</h4>
+                <div>
+                  <p className="leading-relaxed text-ink-soft">{p.text}</p>
+                  <p className="mt-2 flex gap-5 text-sm">
+                    {p.links.map((l) => (
+                      <a key={l.href} className="link" href={l.href}>
+                        {l.label}
+                      </a>
+                    ))}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </Section>
 
         <Section id="experience" title="Experience">
@@ -89,26 +108,6 @@ export default function Home() {
               </div>
             ))}
           </dl>
-        </Section>
-
-        <Section id="projects" title="Earlier projects">
-          <ul className="max-w-4xl">
-            {otherProjects.map((p) => (
-              <li key={p.title} className="grid gap-1 border-t border-rule py-5 first:border-t-0 first:pt-0 sm:grid-cols-[12rem_1fr] sm:gap-8">
-                <h3 className="font-semibold">{p.title}</h3>
-                <div>
-                  <p className="leading-relaxed text-ink-soft">{p.text}</p>
-                  <p className="mt-2 flex gap-5 text-sm">
-                    {p.links.map((l) => (
-                      <a key={l.href} className="link" href={l.href}>
-                        {l.label}
-                      </a>
-                    ))}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ul>
         </Section>
 
         <Section id="contact" title="Get in touch">

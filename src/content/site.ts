@@ -145,7 +145,8 @@ export const alsoAtAddie = [
 
 export const offerRing = {
   title: "OfferRing",
-  url: "https://offerring.vercel.app",
+  tagline: "A job search copilot I build on my own time and use every day.",
+  status: "Private deployment for my own job search; the source is not public yet.",
   summary:
     "My own job search tool: a browser side panel and a dashboard. It fills standard application fields, drafts open question answers grounded only in my own experience, remembers every answer I submit, warns me before I apply twice, and ranks new postings every day. It never submits an application.",
   points: [
