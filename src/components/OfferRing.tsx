@@ -1,4 +1,5 @@
 import { offerRing, offerRingDemos } from "@/content/site";
+import { DemoTabs } from "./DemoTabs";
 
 export function OfferRing() {
   return (
@@ -47,34 +48,10 @@ export function OfferRing() {
       </div>
 
       {offerRingDemos.length > 0 && (
-        <>
-        <p className="mt-14 text-sm text-ink-soft">Recorded with a fictional applicant and demo data.</p>
-        <div className="mt-4 space-y-12">
-          {offerRingDemos.map((demo) => (
-            <figure key={demo.id} className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-end lg:gap-10">
-              <video
-                className="h-auto w-full rounded-[3px] border border-rule bg-paper-raised"
-                width={1200}
-                height={854}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                poster={`${demo.src}.jpg`}
-                aria-label={`${demo.title}: ${demo.caption}`}
-              >
-                <source src={`${demo.src}.webm`} type="video/webm" />
-                <source src={`${demo.src}.mp4`} type="video/mp4" />
-              </video>
-              <figcaption>
-                <span className="block font-semibold">{demo.title}</span>
-                <span className="mt-1 block leading-relaxed text-ink-soft">{demo.caption}</span>
-              </figcaption>
-            </figure>
-          ))}
+        <div className="mt-14 max-w-4xl">
+          <p className="mb-4 text-sm text-ink-soft">The dashboard, recorded with a fictional applicant and demo data.</p>
+          <DemoTabs demos={offerRingDemos} />
         </div>
-        </>
       )}
     </div>
   );

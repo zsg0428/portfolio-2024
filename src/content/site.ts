@@ -191,6 +191,18 @@ export const offerRingDemos: Demo[] = [
     caption: "The fact bank drafted answers may cite. Numbers in an answer must appear in a fact it cites.",
     src: "/demos/offerring-facts",
   },
+  {
+    id: "companies",
+    title: "Companies",
+    caption: "Companies I watch. Their public job boards are checked twice a day, and new postings land on Today.",
+    src: "/demos/offerring-companies",
+  },
+  {
+    id: "profile",
+    title: "Profile",
+    caption: "The one profile every form is filled from. Work authorization and sponsorship come only from answers I set myself.",
+    src: "/demos/offerring-profile",
+  },
 ];
 
 export const otherProjects = [
