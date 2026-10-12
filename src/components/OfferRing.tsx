@@ -49,7 +49,7 @@ export function OfferRing() {
 
       {offerRingDemos.length > 0 && (
         <div className="mt-14 max-w-4xl">
-          <p className="mb-4 text-sm text-ink-soft">The dashboard, recorded with a fictional applicant and demo data.</p>
+          <p className="mb-4 text-sm text-ink-soft">Recorded with a fictional applicant and demo data.</p>
           <DemoTabs demos={offerRingDemos} />
         </div>
       )}

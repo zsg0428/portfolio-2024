@@ -185,39 +185,59 @@ export interface Demo {
   caption: string;
   /** Paths under /public, without extension; .mp4, .webm and .jpg (poster) must exist. */
   src: string;
+  width: number;
+  height: number;
 }
 
 // Recorded with a fictional applicant and a separate demo database; no real profile data.
 export const offerRingDemos: Demo[] = [
   {
+    id: "autofill",
+    title: "Autofill",
+    caption: "One click fills a real Greenhouse application, live field by field. Work authorization and sponsorship come only from stored answers, and questions it cannot answer truthfully are left for me. It never submits.",
+    src: "/demos/offerring-autofill",
+    width: 1280,
+    height: 684,
+  },
+  {
     id: "today",
     title: "Today",
     caption: "New postings from watched companies and Hacker News, filtered by my rules and scored 1 to 5 against my profile, with what is missing.",
     src: "/demos/offerring-today",
+    width: 1200,
+    height: 854,
   },
   {
     id: "applications",
     title: "Applications",
     caption: "Every application with its status history. The extension records a submission when it sees the confirmation page.",
     src: "/demos/offerring-applications",
+    width: 1200,
+    height: 854,
   },
   {
     id: "facts",
     title: "Facts",
     caption: "The fact bank drafted answers may cite. Numbers in an answer must appear in a fact it cites.",
     src: "/demos/offerring-facts",
+    width: 1200,
+    height: 854,
   },
   {
     id: "companies",
     title: "Companies",
     caption: "Companies I watch. Their public job boards are checked twice a day, and new postings land on Today.",
     src: "/demos/offerring-companies",
+    width: 1200,
+    height: 854,
   },
   {
     id: "profile",
     title: "Profile",
     caption: "The one profile every form is filled from. Work authorization and sponsorship come only from answers I set myself.",
     src: "/demos/offerring-profile",
+    width: 1200,
+    height: 854,
   },
 ];
 
