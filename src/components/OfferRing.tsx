@@ -47,29 +47,34 @@ export function OfferRing() {
       </div>
 
       {offerRingDemos.length > 0 && (
-        <div className="mt-14 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
+        <>
+        <p className="mt-14 text-sm text-ink-soft">Recorded with a fictional applicant and demo data.</p>
+        <div className="mt-4 space-y-12">
           {offerRingDemos.map((demo) => (
-            <figure key={demo.id}>
+            <figure key={demo.id} className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-end lg:gap-10">
               <video
-                className="aspect-video w-full rounded-[3px] border border-rule bg-paper-raised object-cover object-left-top"
+                className="h-auto w-full rounded-[3px] border border-rule bg-paper-raised"
+                width={1200}
+                height={854}
                 autoPlay
                 muted
                 loop
                 playsInline
                 preload="metadata"
                 poster={`${demo.src}.jpg`}
-                aria-label={demo.title}
+                aria-label={`${demo.title}: ${demo.caption}`}
               >
                 <source src={`${demo.src}.webm`} type="video/webm" />
                 <source src={`${demo.src}.mp4`} type="video/mp4" />
               </video>
-              <figcaption className="mt-3">
+              <figcaption>
                 <span className="block font-semibold">{demo.title}</span>
-                <span className="block text-sm leading-relaxed text-ink-soft">{demo.caption}</span>
+                <span className="mt-1 block leading-relaxed text-ink-soft">{demo.caption}</span>
               </figcaption>
             </figure>
           ))}
         </div>
+        </>
       )}
     </div>
   );

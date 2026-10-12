@@ -171,8 +171,27 @@ export interface Demo {
   src: string;
 }
 
-// Filled in once the demo clips are recorded with a fictional profile.
-export const offerRingDemos: Demo[] = [];
+// Recorded with a fictional applicant and a separate demo database; no real profile data.
+export const offerRingDemos: Demo[] = [
+  {
+    id: "today",
+    title: "Today",
+    caption: "New postings from watched companies and Hacker News, filtered by my rules and scored 1 to 5 against my profile, with what is missing.",
+    src: "/demos/offerring-today",
+  },
+  {
+    id: "applications",
+    title: "Applications",
+    caption: "Every application with its status history. The extension records a submission when it sees the confirmation page.",
+    src: "/demos/offerring-applications",
+  },
+  {
+    id: "facts",
+    title: "Facts",
+    caption: "The fact bank drafted answers may cite. Numbers in an answer must appear in a fact it cites.",
+    src: "/demos/offerring-facts",
+  },
+];
 
 export const otherProjects = [
   {
